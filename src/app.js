@@ -43,17 +43,17 @@ bot.on('inline_query', (query) => {
   const results = [{
     type: 'contact',
     id: 1,
-    phone_number: '',
+    phone_number: 999999999,
     first_name: queryId,
   }, {
     type: 'contact',
     id: 2,
-    phone_number: '',
+    phone_number: 999999999,
     first_name: queryContent,
   },{
     type: 'contact',
     id: 3,
-    phone_number: '',
+    phone_number: 999999999,
     first_name: "I'm sorry...",
   },]
 
