@@ -15,9 +15,9 @@ bot.on('inline_query', (query) => {
     type: 'Article',
     id: 1,
     title: "Regular, just normal boring text",
-    description: 'An apology',
+    description: queryContent,
     input_message_content: {
-      message_text: "I'm sorry ok?"
+      message_text: queryContent,
     },
   }, {
     type: 'Article',
