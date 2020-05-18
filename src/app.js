@@ -38,6 +38,8 @@ bot.on('inline_query', (query => {
   const queryId = query.id;
   const queryContent = query.query;
 
+  console.log(query);
+
   bot.answerInlineQuery(queryId, (queryId, query) => {
     return [{
       message_text: queryId,
