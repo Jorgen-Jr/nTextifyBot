@@ -4,8 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 
-const bot = require('./examplebot');
-
 const TextController = require('./controllers/TextController');
 
 //Usando as politicas de acesso do cors
@@ -29,7 +27,12 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 router.post('/getText', TextController.index);
+router.get('/', (req, res) => {
+  res.json({ message: "I'm working hooman!" });
+});
 
+
+const bot = require('./examplebot');
 
 
 module.exports = app.use('', router);
