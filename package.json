@@ -1,0 +1,29 @@
+{
+  "name": "ntextifybot",
+  "version": "1.0.0",
+  "description": "Bot for telegram at @ntextifybot that will modify texts.",
+  "main": "server.js",
+  "scripts": {
+    "start": "start src/server.js",
+    "dev": "nodemon src/server.js -ignore __tests__",
+    "pretest": "NODE_ENV=test",
+    "test": "NODE_ENV=test jest",
+    "posttest": "NODE_ENV=test"
+  },
+  "author": "Jorge Antônio da Silva Nascimento Junior",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.0.1",
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2",
+    "factory-girl": "^5.0.4",
+    "faker": "^4.1.0"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.50.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.4"
+  }
+}
