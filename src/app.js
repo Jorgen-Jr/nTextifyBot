@@ -6,6 +6,8 @@ const app = express();
 
 const TextController = require('./controllers/TextController');
 
+const transformer = require('../util/transformer');
+
 //Usando as politicas de acesso do cors
 app.use(cors());
 
@@ -38,20 +40,18 @@ bot.on('inline_query', (query) => {
   const queryId = query.id;
   const queryContent = query.query;
 
-  console.log(query);
-
   const results = [{
     type: 'Article',
     id: 1,
-    title: queryId,
-    description: 'queryId',
+    title: 'Backwards',
+    description: transformer.backwards(queryContent),
     input_message_content: {
-      message_text: queryId
+      message_text: transformer.backwards(queryContent)
     },
   }, {
     type: 'Article',
     id: 2,
-    title: queryContent,
+    title: 'Upside Down',
     description: 'queryContent',
     input_message_content: {
       message_text: queryContent
@@ -59,12 +59,29 @@ bot.on('inline_query', (query) => {
   }, {
     type: 'Article',
     id: 3,
-    title: "I am so sorry...",
+    title: "Mirrored",
     description: 'An apology',
     input_message_content: {
       message_text: "I'm sorry ok?"
     },
-  },]
+  },{
+    type: 'Article',
+    id: 4,
+    title: "Upside Down And Mirrored",
+    description: 'An apology',
+    input_message_content: {
+      message_text: "I'm sorry ok?"
+    },
+  }, {
+    type: 'Article',
+    id: 5,
+    title: "Tiny",
+    description: 'An apology',
+    input_message_content: {
+      message_text: "I'm sorry ok?"
+    },
+  },
+]
 
   bot.answerInlineQuery(queryId, results);
 });
