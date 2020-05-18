@@ -6,7 +6,7 @@ const app = express();
 
 const TextController = require('./controllers/TextController');
 
-const transformer = require('../util/transformer');
+const transformer = require('./util/transformer');
 
 //Usando as politicas de acesso do cors
 app.use(cors());

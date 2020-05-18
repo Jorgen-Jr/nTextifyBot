@@ -4,13 +4,12 @@ module.exports ={
 
         return backwards_text;
     },
-    upsideDown(text){
+    upsideDown(text) {
 
     },
-    mirrored(text){
-
+    mirrored(text) {
     },
-    tiny(text){
+    tiny(text) {
 
     }
 }
