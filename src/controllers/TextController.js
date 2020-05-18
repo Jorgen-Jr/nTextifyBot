@@ -1,4 +1,3 @@
-const Text = require('../models/Text');
 const transformer = require('../util/transformer');
 
 module.exports = {
@@ -6,13 +5,13 @@ module.exports = {
 
         const { text } = req.body;
 
-        const Text = {
-            text
-        }
-
         let response_texts = {
             regular: text,
             backwards: transformer.backwards(text),
+            upside_down: transformer.upsideDown(text),
+            mirrored: transformer.mirrored(text),
+            tiny: transformer.tiny(text),
+            tiny_upside_down: transformer.tinyUpsideDown(text),
         }
 
         return res.json(response_texts);
