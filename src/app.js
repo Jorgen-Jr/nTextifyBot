@@ -41,23 +41,23 @@ bot.on('inline_query', (query) => {
   console.log(query);
 
   const results = [{
-    type: 'contact',
+    type: 'Article',
     id: 1,
-    phone_number: 999999999,
-    game_short_name: queryId,
+    title: queryId,
+    description: 'queryId',
     input_message_content: queryId,
   }, {
-    type: 'contact',
+    type: 'Article',
     id: 2,
-    phone_number: 999999999,
-    game_short_name: queryContent,
+    title: queryContent,
+    description: 'queryContent',
     input_message_content: queryContent,
   },{
-    type: 'contact',
+    type: 'Article',
     id: 3,
-    phone_number: 999999999,
-    game_short_name: "I'm sorry...",
-    input_message_content: "I'm sorry...",
+    title: "I am so sorry...",
+    description: 'An apology',
+    input_message_content: "I'm sorry ok?",
   },]
 
   bot.answerInlineQuery(queryId, results);
