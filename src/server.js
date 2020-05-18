@@ -1,3 +1,5 @@
+require('./examplebot');
+
 //Referenciar as controllers (Rotas da api)
 const app = require('./app');
 
