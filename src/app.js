@@ -34,16 +34,17 @@ const token = process.env.BOT_TOKEN;
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
 
-bot.on('inline_query', (msg => {
-  const queryId = msg.query.id;
+bot.on('inline_query', (query => {
+  const queryId = query.id;
+  const queryContent = query.query;
 
-  bot.answerInlineQuery(queryId, (queryId, msg) => {
+  bot.answerInlineQuery(queryId, (queryId, query) => {
     return [{
       message_text: queryId,
     },{
-      message_text: msg,
+      message_text: queryContent,
     },{
-      message_text: 'Here goes Nothing',
+      message_text: query,
     },{
       message_text: "I'm sorry...",
     }]
