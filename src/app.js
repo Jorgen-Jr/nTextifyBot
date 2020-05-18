@@ -45,19 +45,25 @@ bot.on('inline_query', (query) => {
     id: 1,
     title: queryId,
     description: 'queryId',
-    input_message_content: queryId,
+    input_message_content: {
+      message_text: queryId
+    },
   }, {
     type: 'Article',
     id: 2,
     title: queryContent,
     description: 'queryContent',
-    input_message_content: queryContent,
-  },{
+    input_message_content: {
+      message_text: queryContent
+    },
+  }, {
     type: 'Article',
     id: 3,
     title: "I am so sorry...",
     description: 'An apology',
-    input_message_content: "I'm sorry ok?",
+    input_message_content: {
+      message_text: "I'm sorry ok?"
+    },
   },]
 
   bot.answerInlineQuery(queryId, results);
