@@ -27,12 +27,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 router.post('/getText', TextController.index);
+
 router.get('/', (req, res) => {
   res.json({ message: "I'm working hooman!" });
 });
-
-
-const bot = require('./examplebot');
-
 
 module.exports = app.use('', router);
