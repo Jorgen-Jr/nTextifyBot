@@ -5,4 +5,4 @@ It should return the look options for the message and send it when the user choo
 
 ### Usage
 
-Start typing `@ntextfiboy` in any chat and it will show what options you have for the desired text. It's a fair simple bot.
+Start typing `@ntextfibot` in any chat and it will show what options you have for the desired text. It's a fair simple bot.
