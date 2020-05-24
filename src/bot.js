@@ -51,15 +51,7 @@ bot.on('inline_query', (query) => {
     input_message_content: {
       message_text: transformer.tiny(queryContent),
     },
-  }, {
-    type: 'Article',
-    id: 6,
-    title: "Tiny and Upside Down",
-    description: transformer.tinyUpsideDown(queryContent),
-    input_message_content: {
-      message_text: transformer.tinyUpsideDown(queryContent),
-    },
-  },
+  }
   ]
 
   bot.answerInlineQuery(queryId, results);
