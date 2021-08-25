@@ -3,15 +3,9 @@ const axios = require('axios');
 const transformer = require('../src/util/transformer');
 
 exports.handler = async event => {
-
     const body = event.body;
-
     const req = JSON.parse(body);
-
-    const {
-        message,
-        inline_query,
-    } = req;
+    const { message, inline_query } = req;
 
     console.log('Update received: ', req);
 
@@ -24,45 +18,62 @@ exports.handler = async event => {
     if (inline_query) {
         const query = inline_query.query;
 
+        const result = {
+            regular: queryContent,
+            owo: transformer.owo(query),
+            backwards: transformer.backwards(query),
+            upside_down: transformer.upsideDown(query),
+            mirrored: transformer.mirrored(query),
+            tiny: transformer.tiny(query),
+        };
+
         const results = [{
             type: 'Article',
             id: 1,
             title: "Regular, just normal boring text",
-            description: query,
+            description: result.regular,
             input_message_content: {
-                message_text: query,
+                message_text: result.regular,
             },
         }, {
             type: 'Article',
             id: 2,
-            title: 'Backwards',
-            description: transformer.backwards(query),
+            title: 'OwU)~*',
+            description: result.owo,
             input_message_content: {
-                message_text: transformer.backwards(query)
+                message_text: result.owo
             },
         }, {
             type: 'Article',
             id: 3,
-            title: 'Upside Down',
-            description: transformer.upsideDown(query),
+            title: 'Backwards',
+            description: result.backwards,
             input_message_content: {
-                message_text: transformer.upsideDown(query),
+                message_text: result.backwards
             },
         }, {
             type: 'Article',
             id: 4,
-            title: "Mirrored",
-            description: transformer.mirrored(query),
+            title: 'Upside Down',
+            description: result.upside_down,
             input_message_content: {
-                message_text: transformer.mirrored(query),
+                message_text: result.upside_down,
             },
         }, {
             type: 'Article',
             id: 5,
-            title: "Tiny",
-            description: transformer.tiny(query),
+            title: "Mirrored",
+            description: result.mirrored,
             input_message_content: {
-                message_text: transformer.tiny(query),
+                message_text: result.mirrored,
+            },
+        }, {
+            type: 'Article',
+            id: 6,
+            title: "Tiny",
+            description: result.tiny,
+            input_message_content: {
+                message_text: result.tiny,
             },
         }
         ]
@@ -94,11 +105,11 @@ exports.handler = async event => {
     }
 
     async function sendMessage(response) {
-        return await axios.post('https://ntextifybot.netlify.app/.netlify/functions/answerInlineQuery', response);
+        return await axios.post('https://ntextifybot.netlify.app/.netlify/functions/sendMessage', response);
     }
 
     async function answerInlineQuery(response) {
-        return await axios.post('https://ntextifybot.netlify.app/.netlify/functions/sendMessage', response);
+        return await axios.post('https://ntextifybot.netlify.app/.netlify/functions/answerInlineQuery', response);
     }
 
     return {
@@ -106,5 +117,4 @@ exports.handler = async event => {
 
         body: JSON.stringify(response),
     }
-
 }
