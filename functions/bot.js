@@ -19,7 +19,7 @@ exports.handler = async event => {
         const query = inline_query.query;
 
         const result = {
-            regular: queryContent,
+            regular: query,
             owo: transformer.owo(query),
             backwards: transformer.backwards(query),
             upside_down: transformer.upsideDown(query),
