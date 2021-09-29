@@ -84,11 +84,6 @@ exports.handler = async event => {
         });
 
         console.log("Response generated: ", res.data);
-
-        async function answerInlineQuery(response) {
-            return await axios.post('https://ntextifybot.netlify.app/.netlify/functions/answerInlineQuery', response);
-        }
-
     }
     else if (message) {
         const chatId = message.chat.id;
@@ -101,17 +96,20 @@ exports.handler = async event => {
         // send a message in case it doesn't find anything.
         response = {
             chat_id: chatId,
-            text: "Sorry, coudn't catch that 😢 \nPlease use only inline commands for now.",
+            text: "Sorry, coudn't catch that 😢 \nPlease use only inline commands for now",
             parse_mode,
         }
 
         const res = await sendMessage(response);
         console.log("Response generated: ", res.data);
+    }
 
-        async function sendMessage(response) {
-            return await axios.post('https://ntextifybot.netlify.app/.netlify/functions/sendMessage', response);
-        }
+    async function sendMessage(response) {
+        return await axios.post('https://ntextifybot.netlify.app/.netlify/functions/sendMessage', response);
+    }
 
+    async function answerInlineQuery(response) {
+        return await axios.post('https://ntextifybot.netlify.app/.netlify/functions/answerInlineQuery', response);
     }
 
     return {
